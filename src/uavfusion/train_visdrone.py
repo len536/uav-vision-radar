@@ -25,7 +25,7 @@ from ultralytics import YOLO
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default="yolov8s.pt")
-    ap.add_argument("--data", default="visdrone_local.yaml")
+    ap.add_argument("--data", default="configs/visdrone_local.yaml")
     ap.add_argument("--epochs", type=int, default=3)
     ap.add_argument("--imgsz", type=int, default=320)
     ap.add_argument("--batch", type=int, default=16)

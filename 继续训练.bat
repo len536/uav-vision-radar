@@ -16,14 +16,14 @@ call "D:\WorkBuddyWorkspace\2026-11-03-21-15-46\.testvenv\Scripts\activate.bat"
 echo [1/2] Checking checkpoint ...
 if not exist "runs\train\full\weights\last.pt" (
     echo   last.pt not found, starting a fresh 50-epoch run instead.
-    python -u 12_train_visdrone.py --epochs 50 --imgsz 640 --batch 16 --name full --workers 0
+    python -m uavfusion.train_visdrone --epochs 50 --imgsz 640 --batch 16 --name full --workers 0
     goto :done
 )
 
 echo   last.pt found, resuming ...
 echo [2/2] Training started. Close this window ONLY if you want to stop.
 echo.
-python -u 13_resume_train.py
+python -m uavfusion.resume_train
 
 :done
 echo.

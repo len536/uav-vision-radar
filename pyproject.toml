@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uavfusion"
+version = "0.1.0"
+description = "Low-altitude UAV detection & multi-source fusion toolkit: VisDrone training, Kalman tracking, radar link, PyQt GUI"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "len536" }]
+keywords = ["uav", "yolov8", "kalman-filter", "radar", "sensor-fusion", "pyqt5"]
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+]
+
+dependencies = [
+    "numpy>=1.24",
+    "matplotlib>=3.7",
+    "opencv-python>=4.8",
+    "pillow>=10.0",
+    "scipy>=1.11",
+    "ultralytics>=8.2",
+    "PyQt5>=5.15",
+]
+
+[project.optional-dependencies]
+# RTX 50 系（Blackwell, sm_120）必须用 cu128 及以上轮子：
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+# torch 不写死在 dependencies 里，因为 CPU / GPU 轮子来自不同 index。
+torch-cpu = ["torch>=2.2", "torchvision>=0.17"]
+dev = ["pytest>=7.0", "ruff>=0.4"]
+
+[project.scripts]
+# 安装（pip install -e .）后即可在任意终端直接敲这些命令
+uav-check-env       = "uavfusion.env_check:main"
+uav-visdrone-convert = "uavfusion.visdrone_convert:main"
+uav-visdrone-verify = "uavfusion.visdrone_verify:main"
+uav-kalman-demo     = "uavfusion.kalman_experiments:main"
+uav-kalman-track    = "uavfusion.kalman_track_box:main"
+uav-train           = "uavfusion.train_visdrone:main"
+uav-resume          = "uavfusion.resume_train:main"
+uav-eval            = "uavfusion.eval_predict:main"
+uav-radar-server    = "uavfusion.fake_radar_server:main"
+uav-radar-client    = "uavfusion.radar_client:main"
+uav-gui-image       = "uavfusion.gui_image:main"
+uav-gui-fusion      = "uavfusion.gui_fusion:main"
+
+[project.urls]
+Homepage = "https://github.com/len536/uav-vision-radar"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

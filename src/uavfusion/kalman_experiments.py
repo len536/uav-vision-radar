@@ -22,7 +22,7 @@ matplotlib.use("Agg")  # 无界面也能出图
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 
-from kalman_core import Kalman1D  # noqa: E402
+from uavfusion.kalman1d import Kalman1D  # noqa: E402
 
 # 让图里的中文正常显示（Windows 自带雅黑）
 matplotlib.rcParams["font.sans-serif"] = ["Microsoft YaHei", "SimHei", "DejaVu Sans"]

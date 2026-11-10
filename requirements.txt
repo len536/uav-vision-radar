@@ -1,0 +1,14 @@
+# GPU 版 torch 请单独安装（见下方注释），不要从这里装
+numpy>=1.24
+matplotlib>=3.7
+opencv-python>=4.8
+pillow>=10.0
+scipy>=1.11
+ultralytics>=8.2
+PyQt5>=5.5
+
+# ─── torch 安装说明 ───────────────────────────────────────────
+# RTX 50 系列（Blackwell, sm_120）必须装 cu128 及以上，装 cu121 会报
+# "no kernel image is available"：
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+# 其他显卡 / CPU：pip install torch torchvision 即可

@@ -19,7 +19,7 @@ from pathlib import Path
 import cv2
 from ultralytics import YOLO
 
-DATA = "visdrone_local.yaml"
+DATA = "configs/visdrone_local.yaml"
 VAL_IMAGES = (
     "C:/Users/ASUS/.cache/kagglehub/datasets/banuprasadb/visdrone-dataset/"
     "versions/1/VisDrone_Dataset/VisDrone2019-DET-val/images"
