@@ -5,6 +5,18 @@
 
 ---
 
+## 项目导航：我名下的三个仓库各管什么
+
+| 仓库 | 一句话定位 | 里面放什么 |
+|---|---|---|
+| **uav-vision-radar**（本仓库） | 无人机检测+融合的**实验工具链** | 数据处理、训练/续训脚本、卡尔曼、假雷达链路、PyQt 可视化 |
+| [drone-detector-service](https://github.com/len536/drone-detector-service) | 把训练好的模型**变成可调用的服务** | FastAPI 推理接口、Docker 镜像、PyQt 客户端 |
+| [kalman-from-scratch](https://github.com/len536/kalman-from-scratch) | 纯 NumPy **手写卡尔曼滤波**+可视化 | 滤波器核心类、一维/跟踪实验、参数调优对照 |
+
+分工逻辑：本仓库负责"从数据到模型"的完整实验；service 仓库负责"从模型到产品"的工程交付；kalman 仓库负责把融合核心算法单独讲清楚。
+
+---
+
 ## 0. 先读：基于你机器实测的 4 条修正
 
 我已经在你的电脑上实测过，原计划有 4 处必须改：
